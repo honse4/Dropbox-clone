@@ -4,6 +4,7 @@ import { FileType } from "@/typings"
 import { ColumnDef } from "@tanstack/react-table"
 import prettyBytes from "pretty-bytes"
 import {FileIcon, defaultStyles} from "react-file-icon"
+import Link from 'next/link'
 
 
 
@@ -18,7 +19,7 @@ export const columns: ColumnDef<FileType>[] = [
                 <div className="w-10">
                     <FileIcon
                     extension={extension}
-                    labelColor={['#0160FE']}
+                    labelColor={'#0160FE'}
                     //@ts-ignore
                     {...defaultStyles[extension]} />
                 </div>
@@ -44,6 +45,7 @@ export const columns: ColumnDef<FileType>[] = [
     accessorKey:"downloadURL",
     header: "Link",
     cell: ({renderValue, ...props}) => {
+        return (
         <a
         href={renderValue() as string}
         target="_blank"
@@ -51,7 +53,8 @@ export const columns: ColumnDef<FileType>[] = [
         >
             Download
         </a>
+        )
 
-    }
-  }
-]
+    },
+  },
+];

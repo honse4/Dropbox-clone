@@ -44,3 +44,5 @@ shadcn - provides components, use website for downloading them, components go to
 cn() for tailwid css as well, react-dropzone for dropzones, complex syntax.
 
 learn tailwind css, useful for inline
+
+column defines the contents, Table has the shad code, dashboard renders the files which are the contents, tablewrapper is where the rendering code happens
