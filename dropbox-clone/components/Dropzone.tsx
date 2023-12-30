@@ -7,6 +7,7 @@ import { db, storage } from '@/firebase';
 import { collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { addDoc} from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import toast from 'react-hot-toast';
 
 function Dropzone() {
     const maxSize = 20971520;
@@ -33,6 +34,7 @@ function Dropzone() {
       if(!user) return;
 
       setLoading(true);
+      const toastId = toast.loading("Uploading...");
 
       const docRef = await addDoc(collection(db, "users", user.id, "files"), {
         userId: user.id,
@@ -54,6 +56,9 @@ function Dropzone() {
         });
       });
 
+      toast.success("Uploaded Successfully", {
+        id: toastId,
+      })
       setLoading(false);
     }
 
